@@ -3,9 +3,8 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.ScrollPane;
 
 
 public class Main extends Application {
@@ -14,9 +13,12 @@ public class Main extends Application {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
-			Parent parent = loader.load();
+			ScrollPane scrollParent = loader.load();
 			
-			Scene MainScene = new Scene(parent);
+			scrollParent.setFitToHeight(true);//Colocando a altura maxima no scrollPane
+			scrollParent.setFitToWidth(true);//Colocando a largura maxima no scrollPane
+			
+			Scene MainScene = new Scene(scrollParent);
 			stage.setScene(MainScene);
 			stage.setTitle("Sample JavaFx application");
 			stage.show();
